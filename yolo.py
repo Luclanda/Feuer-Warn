@@ -38,8 +38,8 @@ def run_web_server():
 
 def run_go():
     model = YOLO('path/to/the/feuer.pt')
-    results = model(stream=True, source=0, show=True, conf=0.5,verbose=False) #this is using your webcame
-    results = model("tcp://ip-adress:8888", stream=True, show=True, conf=0.5,verbose=False) #this is using the camera of the raspberry pi
+    results = model(stream=True, source=0, show=True, conf=0.5,verbose=False) #this is for using your webcam
+    results = model("tcp://ip-adress-of-Raspberry-Pi:8888", stream=True, show=True, conf=0.5,verbose=False) #this is for using the camera of the raspberry pi
     
     while True:
         for result in results:
