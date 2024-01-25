@@ -5,7 +5,7 @@ Feuer-Warn is a system that utilizes object detection to warn people through a l
 Feuer-Warn is made for Raspberry Pi, but you can also use it in Jupyter Notebook on a PC or Mac. You need to run the command `libcamera-vid -n -t 0 --width 1280 --height 960 --framerate 1 --inline --listen -o tcp://127.0.0.1:8888` to start the camera. If you want, you can also run the yolo.py code from another device, but in that case, you must specify the command for the terminal.
 
 To run the Python code, make sure that the YOLOv8 model is downloaded and located in the correct path. Before running the code, make sure you have installed all dependencies.
-The Yolov8 model:
+If you want all informations about the Yolov8 model:
 [Ultralytics](https://hub.ultralytics.com/models/26iGieshcsQgZQdgOD52)
 
 # DE:
@@ -16,5 +16,5 @@ Feuer-Warn ist für Raspberry Pi entwickelt, kann aber auch in einem Notebook au
 
 Um den Python-Code auszuführen, stellen Sie sicher, dass das YOLOv8-Modell heruntergeladen und im richtigen Pfad platziert ist. Bevor Sie den Code ausführen, sollten Sie überprüfen, dass alle Abhängigkeiten installiert sind.
 
-Das Yolov8-Model ist unter diesem Link auffindbar:
+Falls sie alle Informationen zu dem Yolov8-Model wollen:
 [Ultralytics](https://hub.ultralytics.com/models/26iGieshcsQgZQdgOD52)
