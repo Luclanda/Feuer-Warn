@@ -39,7 +39,7 @@ def run_web_server():
 
 def run_go():
     model = YOLO('/Users/lucalandsiedel/Downloads/feuer-3.pt')
-    results = model(stream=True, source=0, show=True, conf=0.5, verbose=False)
+    results = model(stream=True, source=0, show=True, conf=0.8, verbose=False)
 #    results = model("tcp://192.168.178.134:8888", stream=True, show=True, conf=0.5, verbose=False)
     
     try:
@@ -50,7 +50,7 @@ def run_go():
                         if box.conf > 0.8:
                             c = datetime.now()
                             current_time = c.strftime('%H:%M:%S')
-                            feuer_info = 'Feuer gefunden um %s mit der confidence %f' % (current_time, box.conf*100)
+                            feuer_info = 'Feuer gefunden um %s mit der confidence %f' % (current_time, box.conf)
 
                         MyServer.detected_feuer.append(feuer_info)
                     
