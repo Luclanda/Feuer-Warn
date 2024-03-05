@@ -24,35 +24,41 @@ class MyServer(BaseHTTPRequestHandler):
         self.wfile.write(bytes("</body></html>", "utf-8"))
 
 def run_web_server():
-    server_address = ('ip-adress', 5875)
-    server_address = ('127.0.0.1', 5875)
+    server_address = ('192.168.178.80', 8080)
+   # server_address = ('127.0.0.1', 5875)
     webServer = HTTPServer(server_address, MyServer)
     print("Server started at http://%s:%s" % server_address)
 
     try:
         webServer.serve_forever()
     except KeyboardInterrupt:
-        
-        webServer.server_close()
-        print("Server stopped.")
+        pass
+
+    webServer.server_close()
+    print("Server stopped.")
 
 def run_go():
-    model = YOLO('path/to/the/feuer.pt')
-    results = model(stream=True, source=0, show=True, conf=0.5,verbose=False) #this is for using your webcam
-    results = model("tcp://ip-adress-of-Raspberry-Pi:8888", stream=True, show=True, conf=0.5,verbose=False) #this is for using the camera of the raspberry pi
+    model = YOLO('/Users/lucalandsiedel/Downloads/feuer-3.pt')
+    results = model(stream=True, source=0, show=True, conf=0.5, verbose=False)
+#    results = model("tcp://192.168.178.134:8888", stream=True, show=True, conf=0.5, verbose=False)
     
-    while True:
-        for result in results:
-            for box in result.boxes:
-                if box.cls == 28.00:  
-                    if box.conf > 0.5:
-                        c = datetime.now()
-                        current_time = c.strftime('%H:%M:%S')
-                        feuer_info = 'Fire at %s Confidence: %f' % (current_time, box.conf)
+    try:
+        while True:
+            for result in results:
+                for box in result.boxes:
+                    if box.cls == 80.00:
+                        if box.conf > 0.8:
+                            c = datetime.now()
+                            current_time = c.strftime('%H:%M:%S')
+                            feuer_info = 'Feuer gefunden um %s mit der confidence %f' % (current_time, box.conf*100)
 
-                    MyServer.detected_feuer.append(feuer_info)
+                        MyServer.detected_feuer.append(feuer_info)
+                    
+    except KeyboardInterrupt:
+        print("Beendet.")
 
 if __name__ == "__main__":
+    import threading
     web_server_thread = threading.Thread(target=run_web_server)
     web_server_thread.start()
 
