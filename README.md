@@ -9,7 +9,7 @@ To run the Python code, make sure that the YOLOv8 model is downloaded and locate
 
 # DE:
 # Feuer-Warn
-Feuer-Warn ist ein System, welches Objekterkennung verwendet, um die Menschen mithilfe eines localhosts zu warnen. Das Objekterkennungsmodell ist ein Yolov8m.
+Feuer-Warn ist ein System, welches Objekterkennung verwendet, um Menschen mithilfe eines localhosts zu warnen. Das Objekterkennungsmodell ist ein Yolov8m.
 
 Feuer-Warn ist für Raspberry Pi entwickelt, kann aber auch in einem Notebook auf einem PC oder Mac genutzt werden. Um eine Raspberry Pi Kamera auf dem Raspberry Pi zu starten, müssen Sie den Befehl `libcamera-vid -n -t 0 --width 1280 --height 960 --framerate 1 --inline --listen -o tcp://127.0.0.1:8888` im Terminal ausführen. 
 
